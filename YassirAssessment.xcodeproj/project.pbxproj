@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		47013D5829DD945A0024765D /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47013D5729DD945A0024765D /* APIConstants.swift */; };
 		47F77B9529DD64F00059DD3E /* YassirAssessmentApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F77B9429DD64F00059DD3E /* YassirAssessmentApp.swift */; };
 		47F77B9729DD64F00059DD3E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F77B9629DD64F00059DD3E /* ContentView.swift */; };
 		47F77B9929DD64F00059DD3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47F77B9829DD64F00059DD3E /* Assets.xcassets */; };
@@ -14,6 +15,12 @@
 		47F77BA629DD64F10059DD3E /* YassirAssessmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F77BA529DD64F10059DD3E /* YassirAssessmentTests.swift */; };
 		47F77BB029DD64F10059DD3E /* YassirAssessmentUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F77BAF29DD64F10059DD3E /* YassirAssessmentUITests.swift */; };
 		47F77BB229DD64F10059DD3E /* YassirAssessmentUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F77BB129DD64F10059DD3E /* YassirAssessmentUITestsLaunchTests.swift */; };
+		47F77BBF29DD655A0059DD3E /* Webservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F77BBE29DD655A0059DD3E /* Webservice.swift */; };
+		47F77BC129DD6BE80059DD3E /* MoviesAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F77BC029DD6BE80059DD3E /* MoviesAPIService.swift */; };
+		47F77BC529DD6F4B0059DD3E /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F77BC429DD6F4B0059DD3E /* Movie.swift */; };
+		47F77BCB29DD70B80059DD3E /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F77BCA29DD70B80059DD3E /* RequestError.swift */; };
+		47F77BCD29DD70C60059DD3E /* RequestMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F77BCC29DD70C60059DD3E /* RequestMethod.swift */; };
+		47F77BCF29DD70D50059DD3E /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F77BCE29DD70D50059DD3E /* Endpoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		47013D5729DD945A0024765D /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		47F77B9129DD64F00059DD3E /* YassirAssessment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YassirAssessment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		47F77B9429DD64F00059DD3E /* YassirAssessmentApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YassirAssessmentApp.swift; sourceTree = "<group>"; };
 		47F77B9629DD64F00059DD3E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -44,6 +52,13 @@
 		47F77BAB29DD64F10059DD3E /* YassirAssessmentUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YassirAssessmentUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		47F77BAF29DD64F10059DD3E /* YassirAssessmentUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YassirAssessmentUITests.swift; sourceTree = "<group>"; };
 		47F77BB129DD64F10059DD3E /* YassirAssessmentUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YassirAssessmentUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		47F77BBE29DD655A0059DD3E /* Webservice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Webservice.swift; sourceTree = "<group>"; };
+		47F77BC029DD6BE80059DD3E /* MoviesAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesAPIService.swift; sourceTree = "<group>"; };
+		47F77BC229DD6EDE0059DD3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		47F77BC429DD6F4B0059DD3E /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		47F77BCA29DD70B80059DD3E /* RequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
+		47F77BCC29DD70C60059DD3E /* RequestMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestMethod.swift; sourceTree = "<group>"; };
+		47F77BCE29DD70D50059DD3E /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +109,12 @@
 		47F77B9329DD64F00059DD3E /* YassirAssessment */ = {
 			isa = PBXGroup;
 			children = (
+				47F77BC229DD6EDE0059DD3E /* Info.plist */,
 				47F77B9429DD64F00059DD3E /* YassirAssessmentApp.swift */,
-				47F77B9629DD64F00059DD3E /* ContentView.swift */,
+				47F77BC729DD6F6E0059DD3E /* Views */,
+				47F77BC329DD6F3E0059DD3E /* Models */,
+				47F77BC629DD6F5B0059DD3E /* Network */,
+				47F77BC829DD6FBD0059DD3E /* Services */,
 				47F77B9829DD64F00059DD3E /* Assets.xcassets */,
 				47F77B9A29DD64F00059DD3E /* Preview Content */,
 			);
@@ -125,6 +144,50 @@
 				47F77BB129DD64F10059DD3E /* YassirAssessmentUITestsLaunchTests.swift */,
 			);
 			path = YassirAssessmentUITests;
+			sourceTree = "<group>";
+		};
+		47F77BC329DD6F3E0059DD3E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				47F77BC429DD6F4B0059DD3E /* Movie.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		47F77BC629DD6F5B0059DD3E /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				47F77BC929DD70A20059DD3E /* Base */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		47F77BC729DD6F6E0059DD3E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				47F77B9629DD64F00059DD3E /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		47F77BC829DD6FBD0059DD3E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				47F77BC029DD6BE80059DD3E /* MoviesAPIService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		47F77BC929DD70A20059DD3E /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				47F77BBE29DD655A0059DD3E /* Webservice.swift */,
+				47F77BCC29DD70C60059DD3E /* RequestMethod.swift */,
+				47F77BCA29DD70B80059DD3E /* RequestError.swift */,
+				47F77BCE29DD70D50059DD3E /* Endpoint.swift */,
+				47013D5729DD945A0024765D /* APIConstants.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,6 +322,13 @@
 			files = (
 				47F77B9729DD64F00059DD3E /* ContentView.swift in Sources */,
 				47F77B9529DD64F00059DD3E /* YassirAssessmentApp.swift in Sources */,
+				47F77BCF29DD70D50059DD3E /* Endpoint.swift in Sources */,
+				47F77BCB29DD70B80059DD3E /* RequestError.swift in Sources */,
+				47F77BBF29DD655A0059DD3E /* Webservice.swift in Sources */,
+				47013D5829DD945A0024765D /* APIConstants.swift in Sources */,
+				47F77BCD29DD70C60059DD3E /* RequestMethod.swift in Sources */,
+				47F77BC129DD6BE80059DD3E /* MoviesAPIService.swift in Sources */,
+				47F77BC529DD6F4B0059DD3E /* Movie.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,11 +490,13 @@
 				DEVELOPMENT_TEAM = 79269L34QA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = YassirAssessment/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -449,11 +521,13 @@
 				DEVELOPMENT_TEAM = 79269L34QA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = YassirAssessment/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

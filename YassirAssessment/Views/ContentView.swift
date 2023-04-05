@@ -14,8 +14,19 @@ struct ContentView: View {
                 .imageScale(.large)
                 .foregroundColor(.accentColor)
             Text("Hello, world!")
+        }.onAppear {
+            fetchMovies()
         }
         .padding()
+    }
+    
+    func fetchMovies() {
+        Task.init {
+            //isLoading = true
+            let movies = await MoviesService().getTrendingMovies()
+            print("movies")
+            //isLoading = false
+        }
     }
 }
 
