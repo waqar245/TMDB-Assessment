@@ -25,8 +25,8 @@ struct MoviesDetailView: View {
                 //Movie Details
                 VStack(spacing: 24) {
                     
-                    //Poster Image and Title
                     HStack(alignment: .top, spacing: 16) {
+                        //Poster Image
                         ImageView(imageURL: ImagePathFactory.pathForBackdrop(movie.posterPath),
                                   width: 142,
                                   height: 224)
@@ -34,11 +34,19 @@ struct MoviesDetailView: View {
                         .shadow(radius: 8)
                         
                         VStack(alignment: .leading, spacing: 8) {
+                            //Title
                             Text(movie.title)
                                 .font(.system(size: 32, weight: .bold))
                             
+                            //Release Date
                             if let releaseDate = movie.releaseDate {
                                 DateLabel(date: releaseDate)
+                                    .font(.system(size: 14, weight: .medium))
+                            }
+                            
+                            //Runtime
+                            if let runtime = movie.runtime {
+                                Text("\(runtime/60)h \(runtime%60)min")
                                     .font(.system(size: 14, weight: .medium))
                             }
                         }
