@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct MoviesListView: View {
     
     @StateObject var viewModel: MoviesListingViewModel
     @State private var didLoad: Bool = false
@@ -51,6 +51,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(viewModel: MoviesListingViewModel(service: MoviesMockService()))
+        MoviesListView(viewModel: MoviesListingViewModel(service: MoviesMockService()))
     }
 }

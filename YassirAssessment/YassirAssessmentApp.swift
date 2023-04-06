@@ -11,7 +11,7 @@ import SwiftUI
 struct YassirAssessmentApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView(viewModel: MoviesListingViewModel())
+            MoviesListView(viewModel: MoviesListingViewModel())
         }
     }
 }

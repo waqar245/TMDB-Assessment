@@ -15,8 +15,8 @@ class MoviesListingViewModel: ObservableObject {
     @Published private(set) var isLoading: Bool = false
     @Published private(set) var error: RequestError?
     
-    private(set) var page = 1
-    private(set) var totalPages: Int?
+    private var page = 1
+    private var totalPages: Int?
     
     init(service: MoviesServiceProtocol = MoviesAPIService()) {
         self.service = service
@@ -51,7 +51,7 @@ class MoviesListingViewModel: ObservableObject {
     }
     
     func fetchNextSetIfNeeded(currentMovie: Movie) {
-        if (currentMovie.id == trendingMovies.last?.id) {
+        if (currentMovie.id == trendingMovies.last?.id && page < totalPages ?? 1) {
             fetchTrendingMovies(page: page + 1)
         }
     }
