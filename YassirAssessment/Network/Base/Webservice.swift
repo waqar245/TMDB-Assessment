@@ -33,7 +33,11 @@ class Webservice {
             
             switch response.statusCode {
             case 200...299:
-                guard let decodedResponse = try? JSONDecoder().decode(responseType.self, from: data) else {
+                let decoder = JSONDecoder()
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                decoder.dateDecodingStrategy = .formatted(dateFormatter)
+                guard let decodedResponse = try? decoder.decode(responseType.self, from: data) else {
                     return .failure(.decode)
                 }
                 return .success(decodedResponse)

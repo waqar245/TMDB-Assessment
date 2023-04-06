@@ -8,30 +8,46 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @StateObject var viewModel: MoviesListingViewModel
+    @State private var didLoad: Bool = false
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-        }.onAppear {
-            fetchMovies()
+        NavigationView {
+            ZStack {
+                if (viewModel.isLoading) {
+                    ProgressView().progressViewStyle(.circular)
+                }
+                else {
+                    List {
+                        ForEach(viewModel.trendingMovies) { movie in
+                            MovieListsCellView(movie: movie)
+                        }
+                    }
+                    .padding([.leading, .trailing], -4)
+                    .listStyle(.plain)
+                    .refreshable {
+                        fetchItems(forceRefresh: true)
+                    }
+                }
+            }
+            .navigationBarTitle("Trending Movies", displayMode: .large) //.localized
+            .onAppear{
+                fetchItems()
+            }
         }
-        .padding()
     }
     
-    func fetchMovies() {
-        Task.init {
-            //isLoading = true
-            let movies = await MoviesService().getTrendingMovies()
-            print("movies")
-            //isLoading = false
+    private func fetchItems(forceRefresh: Bool = false) {
+        if (didLoad == false || forceRefresh) {
+            viewModel.fetchTrendingMovies()
+            didLoad = true
         }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(viewModel: MoviesListingViewModel(service: MoviesMockService()))
     }
 }
