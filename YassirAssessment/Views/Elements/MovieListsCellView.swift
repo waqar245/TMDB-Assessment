@@ -10,12 +10,14 @@ import SwiftUI
 struct MovieListsCellView: View {
 
     let movie: Movie
-
+//viewModel: MovieDetailViewModel(MovieItem: Movie)
     var body: some View {
-        //NavigationLink(destination: MovieDetailView(viewModel: MovieDetailViewModel(MovieItem: Movie))) {
+        NavigationLink(destination: MoviesDetailView(movie: movie)) {
             HStack(alignment: .top, spacing: 16) {
-                thumbnail
-                VStack(alignment: .leading) {
+                ImageView(imageURL: ImagePathFactory.pathForPoster(movie.posterPath),
+                          width: 86,
+                          height: 132)
+                VStack(alignment: .leading, spacing: 4) {
                     Text(movie.title)
                         .font(.system(size: 18, weight: .bold))
                     dateLabel()
@@ -27,7 +29,7 @@ struct MovieListsCellView: View {
                 }
                 
             }
-        //}
+        }
     }
 
     private func dateLabel() -> Text? {
@@ -38,29 +40,11 @@ struct MovieListsCellView: View {
         }
         return nil
     }
-    
-    private var thumbnail: some View {
-        AsyncImage(
-            url: URL(string: "\(APIConstants.moviePosterURL)/\(movie.posterPath)"),
-            content: { image in
-                image.resizable()
-                    .aspectRatio(contentMode: .fit)
-            },
-            placeholder: {
-                ProgressView()
-            }
-        )
-        .frame(width: 86, height: 132)
-    }
 }
 
 struct MovieListsCellView_Previews: PreviewProvider {
     static var previews: some View {
-        let movie = Movie(id: 1,
-                            title: "Avatar: The way of Water",
-                            overview: "Second film in the series",
-                            releaseDate: Date.now,
-                            posterPath: "t6HIqrRAclMCA60NsSmeqe9RmNV.jpg")
+        let movie = Mockable().loadJSON(filename: "Movie", type: Movie.self)
         MovieListsCellView(movie: movie)
     }
 }

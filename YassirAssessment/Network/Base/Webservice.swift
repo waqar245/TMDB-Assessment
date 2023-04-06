@@ -31,6 +31,7 @@ class Webservice {
                 return .failure(.noResponse)
             }
             
+            log(data: data, response: response, error: nil)
             switch response.statusCode {
             case 200...299:
                 let decoder = JSONDecoder()
@@ -38,7 +39,7 @@ class Webservice {
                 dateFormatter.dateFormat = "yyyy-MM-dd"
                 decoder.dateDecodingStrategy = .formatted(dateFormatter)
                 guard let decodedResponse = try? decoder.decode(responseType.self, from: data) else {
-                    log(data: data, response: response, error: nil)
+                    //log(data: data, response: response, error: nil)
                     return .failure(.decode)
                 }
                 return .success(decodedResponse)

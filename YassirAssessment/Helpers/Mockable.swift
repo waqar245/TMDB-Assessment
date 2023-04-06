@@ -21,7 +21,13 @@ class Mockable {
 
         do {
             let data = try Data(contentsOf: path)
-            let decodedObject = try JSONDecoder().decode(type, from: data)
+            
+            let decoder = JSONDecoder()
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            decoder.dateDecodingStrategy = .formatted(dateFormatter)
+            
+            let decodedObject = try decoder.decode(type, from: data)
 
             return decodedObject
         } catch {
