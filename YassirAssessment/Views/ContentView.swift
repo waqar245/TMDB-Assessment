@@ -22,6 +22,9 @@ struct ContentView: View {
                     List {
                         ForEach(viewModel.trendingMovies) { movie in
                             MovieListsCellView(movie: movie)
+                                .task {
+                                    viewModel.fetchNextSetIfNeeded(currentMovie: movie)
+                                }
                         }
                     }
                     .padding([.leading, .trailing], -4)

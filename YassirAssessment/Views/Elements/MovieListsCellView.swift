@@ -30,10 +30,13 @@ struct MovieListsCellView: View {
         //}
     }
 
-    private func dateLabel() -> Text {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        return Text(formatter.string(from: movie.releaseDate))
+    private func dateLabel() -> Text? {
+        if let releaseDate = movie.releaseDate {
+            let formatter = DateFormatter()
+            formatter.dateStyle = .medium
+            return Text(formatter.string(from: releaseDate))
+        }
+        return nil
     }
     
     private var thumbnail: some View {

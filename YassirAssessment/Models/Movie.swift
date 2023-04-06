@@ -11,7 +11,7 @@ struct Movie: Codable, Identifiable {
     let id: Int
     let title: String
     let overview: String
-    let releaseDate: Date
+    let releaseDate: Date?
     let posterPath: String
     
     enum CodingKeys: String, CodingKey {

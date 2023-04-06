@@ -8,18 +8,20 @@
 import Foundation
 
 protocol MoviesServiceProtocol {
-    func getTrendingMovies() async -> Result<MoviesResponse, RequestError>
+    func getTrendingMovies(page: Int) async -> Result<MoviesResponse, RequestError>
 }
 
 struct MoviesAPIService: MoviesServiceProtocol {
-    func getTrendingMovies() async -> Result<MoviesResponse, RequestError> {
-        let endPoint = Endpoint(method: .get, path: "/discover/movie")
+    func getTrendingMovies(page: Int) async -> Result<MoviesResponse, RequestError> {
+        let endPoint = Endpoint(method: .get,
+                                path: "/discover/movie",
+                                parameters: [URLQueryItem(name: "page", value: page.description)])
         return await Webservice.request(endPoint, responseType: MoviesResponse.self)
     }
 }
 
 struct MoviesMockService: MoviesServiceProtocol {
-    func getTrendingMovies() async -> Result<MoviesResponse, RequestError> {
+    func getTrendingMovies(page: Int) async -> Result<MoviesResponse, RequestError> {
         return .success(Mockable().loadJSON(filename: "TrendingMovies", type: MoviesResponse.self))
     }
 }

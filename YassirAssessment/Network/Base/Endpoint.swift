@@ -10,7 +10,14 @@ import Foundation
 struct Endpoint {
     let method: RequestMethod
     let path: String
-    let headers: [String: String]? = nil
-    let parameters: [URLQueryItem]? = nil
+    let headers: [String: String]?
+    let parameters: [URLQueryItem]?
+    
+    init(method: RequestMethod, path: String, headers: [String: String]? = nil, parameters: [URLQueryItem]? = nil) {
+        self.method = method
+        self.path = path
+        self.headers = headers
+        self.parameters = parameters
+    }
 }
 

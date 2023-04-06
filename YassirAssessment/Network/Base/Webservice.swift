@@ -38,6 +38,7 @@ class Webservice {
                 dateFormatter.dateFormat = "yyyy-MM-dd"
                 decoder.dateDecodingStrategy = .formatted(dateFormatter)
                 guard let decodedResponse = try? decoder.decode(responseType.self, from: data) else {
+                    log(data: data, response: response, error: nil)
                     return .failure(.decode)
                 }
                 return .success(decodedResponse)
@@ -50,4 +51,39 @@ class Webservice {
             return .failure(.unknown)
         }
     }
+    
+    static func log(data: Data?, response: HTTPURLResponse?, error: Error?){
+
+            let urlString = response?.url?.absoluteString
+            let components = NSURLComponents(string: urlString ?? "")
+
+            let path = "\(components?.path ?? "")"
+            let query = "\(components?.query ?? "")"
+
+            var responseLog = "\n<---------- IN ----------\n"
+            if let urlString = urlString {
+                responseLog += "\(urlString)"
+                responseLog += "\n\n"
+            }
+
+            if let statusCode =  response?.statusCode{
+                responseLog += "HTTP \(statusCode) \(path)?\(query)\n"
+            }
+            if let host = components?.host{
+                responseLog += "Host: \(host)\n"
+            }
+            for (key,value) in response?.allHeaderFields ?? [:] {
+                responseLog += "\(key): \(value)\n"
+            }
+            if let body = data{
+                let bodyString = NSString(data: body, encoding: String.Encoding.utf8.rawValue) ?? "Can't render body; not utf8 encoded";
+                responseLog += "\n\(bodyString)\n"
+            }
+            if let error = error{
+                responseLog += "\nError: \(error.localizedDescription)\n"
+            }
+
+            responseLog += "<------------------------\n";
+            print(responseLog)
+        }
 }
