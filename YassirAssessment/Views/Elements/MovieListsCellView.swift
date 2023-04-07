@@ -12,11 +12,12 @@ struct MovieListsCellView: View {
     let movie: Movie
 //viewModel: MovieDetailViewModel(MovieItem: Movie)
     var body: some View {
-        NavigationLink(destination: MoviesDetailView(movie: movie)) {
+        NavigationLink(destination: MoviesDetailView(viewModel: MovieDetailsViewModel(movieId: movie.id))) {
             HStack(alignment: .top, spacing: 16) {
-                ImageView(imageURL: ImagePathFactory.pathForPoster(movie.posterPath),
+                ImageView(imageURL: ImagePathFactory.urlForImage(movie.posterPath, imageSize: .poster),
                           width: 86,
-                          height: 132)
+                          height: 132,
+                          cornerRadius: 0)
                 VStack(alignment: .leading, spacing: 4) {
                     Text(movie.title)
                         .font(.system(size: 18, weight: .bold))

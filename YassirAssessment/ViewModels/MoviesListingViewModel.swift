@@ -13,7 +13,7 @@ class MoviesListingViewModel: ObservableObject {
     
     @Published private(set) var trendingMovies: [Movie] = []
     @Published private(set) var isLoading: Bool = false
-    @Published private(set) var error: RequestError?
+    @Published private(set) var errorMessage: String?
     
     private var page = 1
     private var totalPages: Int?
@@ -30,22 +30,22 @@ class MoviesListingViewModel: ObservableObject {
             isLoading = true
         }
         
-        Task(priority: .background) {
+        Task.init {
             
             let result = await service.getTrendingMovies(page: page)
             
-            DispatchQueue.main.async { [weak self] in
-            
+            await MainActor.run {
+                
                 switch (result) {
                 case .success(let response):
-                    self?.trendingMovies.append(contentsOf: response.results)
-                    self?.totalPages = response.totalPages
+                    trendingMovies.append(contentsOf: response.results)
+                    totalPages = response.totalPages
                     
                 case .failure(let error):
-                    self?.error = error
+                    errorMessage = error.localizedDescription
                 }
                 
-                self?.isLoading = false
+                isLoading = false
             }
         }
     }

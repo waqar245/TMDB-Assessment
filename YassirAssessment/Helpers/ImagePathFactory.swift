@@ -7,13 +7,18 @@
 
 import Foundation
 
+enum ImageSize: Int {
+    case poster = 300
+    case backdrop = 780
+    case cast = 200
+}
+
 struct ImagePathFactory {
-    
-    static func pathForPoster(_ imagePath: String) -> URL?{
-        return URL(string: "\(APIConstants.movieImageURL)/w200/\(imagePath)")
-    }
-    
-    static func pathForBackdrop(_ imagePath: String) -> URL? {
-        return URL(string: "\(APIConstants.movieImageURL)/w780/\(imagePath)")
+    static func urlForImage(_ imagePath: String?, imageSize: ImageSize) -> URL?{
+        if let imagePath {
+            return URL(string: "\(APIConstants.movieImageURL)/w\(imageSize.rawValue)/\(imagePath)")
+        }
+        
+        return nil
     }
 }

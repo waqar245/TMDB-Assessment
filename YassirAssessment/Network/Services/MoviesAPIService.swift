@@ -10,6 +10,7 @@ import Foundation
 protocol MoviesServiceProtocol {
     func getTrendingMovies(page: Int) async -> Result<MoviesResponse, RequestError>
     func getMovieDetails(movieId: Int) async -> Result<Movie, RequestError>
+    func getMovieCast(movieId: Int) async -> Result<CreditsResponse, RequestError>
 }
 
 struct MoviesAPIService: MoviesServiceProtocol {
@@ -25,6 +26,12 @@ struct MoviesAPIService: MoviesServiceProtocol {
                                  path: "/movie/\(movieId)")
         return await Webservice.request(endPoint, responseType: Movie.self)
     }
+    
+    func getMovieCast(movieId: Int) async -> Result<CreditsResponse, RequestError> {
+        let endPoint = Endpoint(method: .get,
+                                 path: "/movie/\(movieId)/credits")
+        return await Webservice.request(endPoint, responseType: CreditsResponse.self)
+    }
 }
 
 struct MoviesMockService: MoviesServiceProtocol {
@@ -34,5 +41,9 @@ struct MoviesMockService: MoviesServiceProtocol {
     
     func getMovieDetails(movieId: Int) async -> Result<Movie, RequestError> {
         return .success(Mockable().loadJSON(filename: "MovieDetail", type: Movie.self))
+    }
+    
+    func getMovieCast(movieId: Int) async -> Result<CreditsResponse, RequestError> {
+        return .success(Mockable().loadJSON(filename: "MovieDetail", type: CreditsResponse.self)) // todo
     }
 }
