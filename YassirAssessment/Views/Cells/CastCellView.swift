@@ -26,13 +26,13 @@ struct CastCellView: View {
             
             //Name
             Text(cast.name)
-                .font(.system(size: 14, weight: .regular))
+                .font(.caption)
                 
             
             //Character Name
             if let character = cast.character {
                 Text(character)
-                    .font(.system(size: 14, weight: .regular))
+                    .font(.caption)
                     .foregroundColor(.gray)
             }
         }

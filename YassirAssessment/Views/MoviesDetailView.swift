@@ -41,18 +41,19 @@ struct MoviesDetailView: View {
                                     VStack(alignment: .leading, spacing: 8) {
                                         //Title
                                         Text(movie.title)
-                                            .font(.system(size: 32, weight: .bold))
+                                            .font(.system(.largeTitle, weight: .bold))
                                         
                                         //Release Date
                                         if let releaseDate = movie.releaseDate {
                                             DateLabel(date: releaseDate)
-                                                .font(.system(size: 14, weight: .medium))
+                                                .font(.system(.footnote, weight: .medium))
                                         }
                                         
                                         //Runtime
                                         if let runtime = movie.runtime {
                                             Text("\(runtime/60)h \(runtime%60)min")
-                                                .font(.system(size: 14, weight: .medium))
+                                                .font(.system(.caption, weight: .medium))
+                                                .foregroundColor(.gray)
                                         }
                                     }
                                     
@@ -61,19 +62,19 @@ struct MoviesDetailView: View {
                                 
                                 //Overview
                                 VStack(alignment: .leading, spacing: 14) {
-                                    Text("Overview")
-                                        .font(.system(size: 20, weight: .bold))
+                                    Text("OVERVIEW".localized)
+                                        .font(.system(.title3, weight: .bold))
                                     
                                     Text(movie.overview)
-                                        .font(.system(size: 18, weight: .regular))
+                                        .font(.body)
                                 }
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 
                                 //Cast
                                 if let cast = viewModel.cast {
                                     VStack(alignment: .leading, spacing: 14) {
-                                        Text("Top Bill Casts")
-                                            .font(.system(size: 20, weight: .bold))
+                                        Text("CAST".localized)
+                                            .font(.system(.title3, weight: .bold))
                                         ScrollView(.horizontal, showsIndicators: false) {
                                             LazyHStack(spacing: 20) {
                                                 ForEach(cast) { castMember in
@@ -93,7 +94,6 @@ struct MoviesDetailView: View {
                     //Error Message
                     Text("Error: \(viewModel.errorMessage ?? "Details fetch fail")")
                 }
-                
             }
             else {
                 //Loader

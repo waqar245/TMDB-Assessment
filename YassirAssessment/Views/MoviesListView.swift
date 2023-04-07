@@ -34,7 +34,7 @@ struct MoviesListView: View {
                     }
                 }
             }
-            .navigationBarTitle("Trending Movies", displayMode: .large) //.localized
+            .navigationBarTitle("TRENDING".localized, displayMode: .large)
             .onAppear{
                 fetchItems()
             }

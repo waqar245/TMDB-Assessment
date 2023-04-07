@@ -34,6 +34,7 @@ struct MoviesAPIService: MoviesServiceProtocol {
     }
 }
 
+///Used in unit tests and mocking data for development in swiftui canvas 
 struct MoviesMockService: MoviesServiceProtocol {
     func getTrendingMovies(page: Int) async -> Result<MoviesResponse, RequestError> {
         return .success(Mockable().loadJSON(filename: "TrendingMovies", type: MoviesResponse.self))
@@ -44,6 +45,6 @@ struct MoviesMockService: MoviesServiceProtocol {
     }
     
     func getMovieCast(movieId: Int) async -> Result<CreditsResponse, RequestError> {
-        return .success(Mockable().loadJSON(filename: "MovieDetail", type: CreditsResponse.self)) // todo
+        return .success(Mockable().loadJSON(filename: "Credits", type: CreditsResponse.self)) // todo
     }
 }

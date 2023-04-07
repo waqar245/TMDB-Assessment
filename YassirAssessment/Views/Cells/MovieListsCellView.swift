@@ -22,7 +22,7 @@ struct MovieListsCellView: View {
                     Text(movie.title)
                         .font(.system(size: 18, weight: .bold))
                     dateLabel()
-                        .font(.system(size: 12, weight: .regular))
+                        .font(.caption)
                     Text(movie.overview)
                         .font(.system(size: 14, weight: .regular))
                         .foregroundColor(.gray)
