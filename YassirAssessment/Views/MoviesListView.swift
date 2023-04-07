@@ -19,18 +19,24 @@ struct MoviesListView: View {
                     ProgressView().progressViewStyle(.circular)
                 }
                 else {
-                    List {
-                        ForEach(viewModel.trendingMovies) { movie in
-                            MovieListsCellView(movie: movie)
-                                .task {
-                                    await viewModel.fetchNextSetIfNeeded(currentMovie: movie)
-                                }
+                    if (!viewModel.trendingMovies.isEmpty) {
+                        List {
+                            ForEach(viewModel.trendingMovies) { movie in
+                                MovieListsCellView(movie: movie)
+                                    .task {
+                                        await viewModel.fetchNextSetIfNeeded(currentMovie: movie)
+                                    }
+                            }
+                        }
+                        .padding([.leading, .trailing], -4)
+                        .listStyle(.plain)
+                        .refreshable {
+                            fetchItems(forceRefresh: true)
                         }
                     }
-                    .padding([.leading, .trailing], -4)
-                    .listStyle(.plain)
-                    .refreshable {
-                        fetchItems(forceRefresh: true)
+                    else {
+                        //Show Retry view
+                        retryView
                     }
                 }
             }
@@ -49,6 +55,12 @@ struct MoviesListView: View {
             }
             
         }
+    }
+    
+    private var retryView: some View {
+        InfoTextWithAction(text: "\("NO_DATA".localized)\n\(viewModel.errorMessage ?? "")",
+                           actionButtonTitle:"RETRY".localized,
+                           action: { fetchItems(forceRefresh: true)})
     }
 }
 

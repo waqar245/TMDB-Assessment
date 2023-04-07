@@ -9,3 +9,5 @@
 "OVERVIEW" = "Overview";
 "TRENDING" = "Trending Movies";
 "CAST" = "Top Bill Casts";
+"NO_DATA" = "Unable to fetch data\nPlease try again shortly";
+"RETRY" = "Retry";
