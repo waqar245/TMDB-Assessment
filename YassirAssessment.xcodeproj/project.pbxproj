@@ -159,10 +159,8 @@
 		47013D6629DE0D8F0024765D /* Elements */ = {
 			isa = PBXGroup;
 			children = (
-				47013D6729DE0DA40024765D /* MovieListsCellView.swift */,
 				47E6BC1329DF5AE5005D648B /* ImageVIew.swift */,
 				47D6A10229DF626F009F8D43 /* DateLabel.swift */,
-				47D6A10A29DF78B5009F8D43 /* CastCellView.swift */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -178,6 +176,8 @@
 		47E6BC1229DF5AC1005D648B /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				47013D6729DE0DA40024765D /* MovieListsCellView.swift */,
+				47D6A10A29DF78B5009F8D43 /* CastCellView.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -266,8 +266,8 @@
 		47F77BC729DD6F6E0059DD3E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				47E6BC1229DF5AC1005D648B /* Cells */,
 				47013D6629DE0D8F0024765D /* Elements */,
+				47E6BC1229DF5AC1005D648B /* Cells */,
 				47F77B9629DD64F00059DD3E /* MoviesListView.swift */,
 				47E6BC0E29DF458C005D648B /* MoviesDetailView.swift */,
 			);
