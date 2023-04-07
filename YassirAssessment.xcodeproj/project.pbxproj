@@ -19,6 +19,7 @@
 		47433D0429E0227B000E9EC9 /* MovieDetailsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47433D0329E0227B000E9EC9 /* MovieDetailsTests.swift */; };
 		47433D0629E0273B000E9EC9 /* DateFormatterUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47433D0529E0273B000E9EC9 /* DateFormatterUtility.swift */; };
 		47433D0A29E02EF0000E9EC9 /* InfoTextWithAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47433D0929E02EF0000E9EC9 /* InfoTextWithAction.swift */; };
+		47433D0C29E0313E000E9EC9 /* CastListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47433D0B29E0313E000E9EC9 /* CastListView.swift */; };
 		47D6A10329DF626F009F8D43 /* DateLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D6A10229DF626F009F8D43 /* DateLabel.swift */; };
 		47D6A10529DF6F16009F8D43 /* MovieDetail.json in Resources */ = {isa = PBXBuildFile; fileRef = 47D6A10429DF6F16009F8D43 /* MovieDetail.json */; };
 		47D6A10729DF7397009F8D43 /* Cast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D6A10629DF7397009F8D43 /* Cast.swift */; };
@@ -65,6 +66,7 @@
 		47433D0329E0227B000E9EC9 /* MovieDetailsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailsTests.swift; sourceTree = "<group>"; };
 		47433D0529E0273B000E9EC9 /* DateFormatterUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterUtility.swift; sourceTree = "<group>"; };
 		47433D0929E02EF0000E9EC9 /* InfoTextWithAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTextWithAction.swift; sourceTree = "<group>"; };
+		47433D0B29E0313E000E9EC9 /* CastListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastListView.swift; sourceTree = "<group>"; };
 		47D6A10229DF626F009F8D43 /* DateLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateLabel.swift; sourceTree = "<group>"; };
 		47D6A10429DF6F16009F8D43 /* MovieDetail.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MovieDetail.json; sourceTree = "<group>"; };
 		47D6A10629DF7397009F8D43 /* Cast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cast.swift; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 				47E6BC1229DF5AC1005D648B /* Cells */,
 				47F77B9629DD64F00059DD3E /* MoviesListView.swift */,
 				47E6BC0E29DF458C005D648B /* MoviesDetailView.swift */,
+				47433D0B29E0313E000E9EC9 /* CastListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 				47D6A10929DF73BB009F8D43 /* CreditsResponse.swift in Sources */,
 				47E6BC0F29DF458C005D648B /* MoviesDetailView.swift in Sources */,
 				47F77BC529DD6F4B0059DD3E /* Movie.swift in Sources */,
+				47433D0C29E0313E000E9EC9 /* CastListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

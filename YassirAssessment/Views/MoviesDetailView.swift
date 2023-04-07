@@ -32,7 +32,8 @@ struct MoviesDetailView: View {
                                 
                                 HStack(alignment: .top, spacing: 16) {
                                     //Poster Image
-                                    ImageView(imageURL: ImagePathFactory.urlForImage(movie.posterPath, imageSize: .w300),
+                                    ImageView(imageURL: ImagePathFactory.urlForImage(movie.posterPath,
+                                                                                     imageSize: .w300),
                                               width: 142,
                                               height: 224,
                                               cornerRadius: 8)
@@ -71,19 +72,8 @@ struct MoviesDetailView: View {
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 
                                 //Cast
-                                if let cast = viewModel.cast {
-                                    VStack(alignment: .leading, spacing: 14) {
-                                        Text("CAST".localized)
-                                            .font(.system(.title3, weight: .bold))
-                                        ScrollView(.horizontal, showsIndicators: false) {
-                                            LazyHStack(spacing: 20) {
-                                                ForEach(cast) { castMember in
-                                                    CastCellView(cast: castMember)
-                                                        .frame(maxWidth: 124, maxHeight: 400)
-                                                }
-                                            }
-                                        }
-                                    }
+                                if let castMembers = viewModel.cast {
+                                    CastListView(cast: castMembers)
                                 }
                             }
                             .padding([.leading,.trailing], 16)
