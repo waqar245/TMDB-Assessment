@@ -15,14 +15,14 @@ class MoviesListingViewModel: ObservableObject {
     @Published private(set) var isLoading: Bool = false
     @Published private(set) var errorMessage: String?
     
-    private var page = 1
+    private(set) var page = 1
     private var totalPages: Int?
     
     init(service: MoviesServiceProtocol = MoviesAPIService()) {
         self.service = service
     }
     
-    func fetchTrendingMovies(page: Int = 1) {
+    func fetchTrendingMovies(page: Int = 1) async {
         
         self.page = page
         
@@ -30,29 +30,26 @@ class MoviesListingViewModel: ObservableObject {
             isLoading = true
         }
         
-        Task.init {
+        let result = await service.getTrendingMovies(page: page)
+        
+        await MainActor.run {
             
-            let result = await service.getTrendingMovies(page: page)
-            
-            await MainActor.run {
+            switch (result) {
+            case .success(let response):
+                trendingMovies.append(contentsOf: response.results)
+                totalPages = response.totalPages
                 
-                switch (result) {
-                case .success(let response):
-                    trendingMovies.append(contentsOf: response.results)
-                    totalPages = response.totalPages
-                    
-                case .failure(let error):
-                    errorMessage = error.localizedDescription
-                }
-                
-                isLoading = false
+            case .failure(let error):
+                errorMessage = error.localizedDescription
             }
+            
+            isLoading = false
         }
     }
     
-    func fetchNextSetIfNeeded(currentMovie: Movie) {
+    func fetchNextSetIfNeeded(currentMovie: Movie) async {
         if (currentMovie.id == trendingMovies.last?.id && page < totalPages ?? 1) {
-            fetchTrendingMovies(page: page + 1)
+            await fetchTrendingMovies(page: page + 1)
         }
     }
 }

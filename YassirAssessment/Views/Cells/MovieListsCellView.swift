@@ -14,15 +14,20 @@ struct MovieListsCellView: View {
     var body: some View {
         NavigationLink(destination: MoviesDetailView(viewModel: MovieDetailsViewModel(movieId: movie.id))) {
             HStack(alignment: .top, spacing: 16) {
-                ImageView(imageURL: ImagePathFactory.urlForImage(movie.posterPath, imageSize: .poster),
+                ImageView(imageURL: ImagePathFactory.urlForImage(movie.posterPath, imageSize: .w300),
                           width: 86,
                           height: 132,
                           cornerRadius: 0)
                 VStack(alignment: .leading, spacing: 4) {
+                    
                     Text(movie.title)
                         .font(.system(size: 18, weight: .bold))
-                    dateLabel()
-                        .font(.caption)
+                    
+                    if let releaseDate = movie.releaseDate {
+                        DateLabel(date: releaseDate)
+                            .font(.caption)
+                    }
+                    
                     Text(movie.overview)
                         .font(.system(size: 14, weight: .regular))
                         .foregroundColor(.gray)
@@ -31,15 +36,6 @@ struct MovieListsCellView: View {
                 
             }
         }
-    }
-
-    private func dateLabel() -> Text? {
-        if let releaseDate = movie.releaseDate {
-            let formatter = DateFormatter()
-            formatter.dateStyle = .medium
-            return Text(formatter.string(from: releaseDate))
-        }
-        return nil
     }
 }
 

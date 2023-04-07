@@ -21,7 +21,7 @@ struct MoviesDetailView: View {
                             //Cover Image
                             if let backdropPath = movie.backdropPath {
                                 ImageView(imageURL: ImagePathFactory.urlForImage(backdropPath,
-                                                                                 imageSize: .backdrop),
+                                                                                 imageSize: .w780),
                                           width: UIScreen.main.bounds.size.width,
                                           height: UIScreen.main.bounds.size.width/1.74,
                                           cornerRadius: 0)
@@ -32,7 +32,7 @@ struct MoviesDetailView: View {
                                 
                                 HStack(alignment: .top, spacing: 16) {
                                     //Poster Image
-                                    ImageView(imageURL: ImagePathFactory.urlForImage(movie.posterPath, imageSize: .poster),
+                                    ImageView(imageURL: ImagePathFactory.urlForImage(movie.posterPath, imageSize: .w300),
                                               width: 142,
                                               height: 224,
                                               cornerRadius: 8)
@@ -50,8 +50,8 @@ struct MoviesDetailView: View {
                                         }
                                         
                                         //Runtime
-                                        if let runtime = movie.runtime {
-                                            Text("\(runtime/60)h \(runtime%60)min")
+                                        if let runTimeFormatted = movie.runTimeFormatted() {
+                                            Text(runTimeFormatted)
                                                 .font(.system(.caption, weight: .medium))
                                                 .foregroundColor(.gray)
                                         }
@@ -107,13 +107,15 @@ struct MoviesDetailView: View {
     }
     
     func fetchMovieDetails() {
-        viewModel.fetchMovieDetails()
+        Task.init {
+            await viewModel.fetchMovieDetails()
+        }
     }
 }
 
 struct MoviesDetailView_Previews: PreviewProvider {
     static var previews: some View {
         let movie = Mockable().loadJSON(filename: "Movie", type: Movie.self)
-        MoviesDetailView(viewModel: MovieDetailsViewModel(movieId: movie.id))
+        MoviesDetailView(viewModel: MovieDetailsViewModel(service: MoviesMockService(), movieId: movie.id))
     }
 }

@@ -8,9 +8,9 @@
 import Foundation
 
 enum ImageSize: Int {
-    case poster = 300
-    case backdrop = 780
-    case cast = 200
+    case w300 = 300
+    case w780 = 780
+    case w200 = 200
 }
 
 struct ImagePathFactory {

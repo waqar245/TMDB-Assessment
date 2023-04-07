@@ -12,13 +12,7 @@ struct DateLabel: View {
     let date: Date
     
     var body: some View {
-        Text(dateFormatter.string(from: date))
-    }
-    
-    var dateFormatter: DateFormatter {
-        let df = DateFormatter()
-        df.dateStyle = .medium
-        return df
+        Text(DateFormatterUtility.mediumStyleFormatter.string(from: date))
     }
 }
 

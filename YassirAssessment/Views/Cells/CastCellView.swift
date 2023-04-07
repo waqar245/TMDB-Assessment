@@ -18,7 +18,7 @@ struct CastCellView: View {
             //Image
             ImageView(imageURL:
                         ImagePathFactory.urlForImage(cast.profileImage,
-                                                        imageSize: .cast),
+                                                        imageSize: .w200),
                       width: 124,
                       height: 200,
                       cornerRadius: 8)

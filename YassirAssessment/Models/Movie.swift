@@ -25,4 +25,12 @@ struct Movie: Codable, Identifiable {
         case posterPath = "poster_path"
         case backdropPath = "backdrop_path"
     }
+    
+    func runTimeFormatted() -> String? {
+        var runTimeFormatted: String?
+        if let runtime {
+            runTimeFormatted = "\(runtime/60)h \(runtime%60)min"
+        }
+        return runTimeFormatted
+    }
 }

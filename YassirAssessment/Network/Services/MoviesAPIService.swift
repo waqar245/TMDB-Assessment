@@ -18,19 +18,19 @@ struct MoviesAPIService: MoviesServiceProtocol {
         let endPoint = Endpoint(method: .get,
                                 path: "/discover/movie",
                                 parameters: [URLQueryItem(name: "page", value: page.description)])
-        return await Webservice.request(endPoint, responseType: MoviesResponse.self)
+        return await APIService.request(endPoint, responseType: MoviesResponse.self)
     }
     
     func getMovieDetails(movieId: Int) async -> Result<Movie, RequestError> {
         let endPoint = Endpoint(method: .get,
                                  path: "/movie/\(movieId)")
-        return await Webservice.request(endPoint, responseType: Movie.self)
+        return await APIService.request(endPoint, responseType: Movie.self)
     }
     
     func getMovieCast(movieId: Int) async -> Result<CreditsResponse, RequestError> {
         let endPoint = Endpoint(method: .get,
                                  path: "/movie/\(movieId)/credits")
-        return await Webservice.request(endPoint, responseType: CreditsResponse.self)
+        return await APIService.request(endPoint, responseType: CreditsResponse.self)
     }
 }
 

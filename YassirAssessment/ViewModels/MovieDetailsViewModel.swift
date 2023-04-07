@@ -22,20 +22,18 @@ class MovieDetailsViewModel: ObservableObject {
         self.movieId = movieId
     }
     
-    func fetchMovieDetails() {
+    func fetchMovieDetails() async {
         
         isLoaded = false
         
-        Task.init {
-            let movieDetailsResult = await service.getMovieDetails(movieId: movieId)
-            let castResult = await service.getMovieCast(movieId: movieId)
+        let movieDetailsResult = await service.getMovieDetails(movieId: movieId)
+        let castResult = await service.getMovieCast(movieId: movieId)
+        
+        await MainActor.run {
+            processMoviesDetailsResult(movieDetailsResult)
+            processCastResult(castResult)
             
-            await MainActor.run {
-                processMoviesDetailsResult(movieDetailsResult)
-                processCastResult(castResult)
-                
-                isLoaded = true
-            }
+            isLoaded = true
         }
     }
     

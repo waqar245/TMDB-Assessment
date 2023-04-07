@@ -23,7 +23,7 @@ struct MoviesListView: View {
                         ForEach(viewModel.trendingMovies) { movie in
                             MovieListsCellView(movie: movie)
                                 .task {
-                                    viewModel.fetchNextSetIfNeeded(currentMovie: movie)
+                                    await viewModel.fetchNextSetIfNeeded(currentMovie: movie)
                                 }
                         }
                     }
@@ -43,8 +43,11 @@ struct MoviesListView: View {
     
     private func fetchItems(forceRefresh: Bool = false) {
         if (didLoad == false || forceRefresh) {
-            viewModel.fetchTrendingMovies()
-            didLoad = true
+            Task.init {
+                await viewModel.fetchTrendingMovies()
+                didLoad = true
+            }
+            
         }
     }
 }
