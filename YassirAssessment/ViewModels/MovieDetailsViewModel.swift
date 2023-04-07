@@ -24,7 +24,9 @@ class MovieDetailsViewModel: ObservableObject {
     
     func fetchMovieDetails() async {
         
-        isLoaded = false
+        await MainActor.run {
+            isLoaded = false
+        }
         
         let movieDetailsResult = await service.getMovieDetails(movieId: movieId)
         let castResult = await service.getMovieCast(movieId: movieId)

@@ -24,10 +24,12 @@ class MoviesListingViewModel: ObservableObject {
     
     func fetchTrendingMovies(page: Int = 1) async {
         
-        self.page = page
-        
-        if (page <= 1) {
-            isLoading = true
+        await MainActor.run {
+            self.page = page
+            
+            if (page <= 1) {
+                isLoading = true
+            }
         }
         
         let result = await service.getTrendingMovies(page: page)

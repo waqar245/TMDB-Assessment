@@ -46,4 +46,15 @@ final class MovieDetailsTests: XCTestCase {
         let formattedDate = DateFormatterUtility.mediumStyleFormatter.string(from: (viewModel.movie?.releaseDate)!)
         XCTAssertEqual(formattedDate, "Apr 5, 2023")
     }
+    
+    func testMovieCast() async throws {
+        
+        await viewModel.fetchMovieDetails()
+        
+        XCTAssertEqual(viewModel.cast?.count, 6)
+        
+        XCTAssertEqual(viewModel.cast?.first?.id, 73457)
+        XCTAssertEqual(viewModel.cast?.first?.name, "Chris Pratt")
+        XCTAssertEqual(viewModel.cast?.first?.character, "Mario (voice)")
+    }
 }

@@ -11,7 +11,7 @@ struct DateFormatterUtility {
     
     static var mediumStyleFormatter: DateFormatter {
         let df = DateFormatter()
-        df.dateStyle = .medium
+        df.dateFormat = "MMM d, YYYY"
         return df
     }
 }
